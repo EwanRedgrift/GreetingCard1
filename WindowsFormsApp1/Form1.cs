@@ -22,24 +22,24 @@ namespace WindowsFormsApp1
 
         Graphics g;
 
-        SolidBrush darkGreenBrush = new SolidBrush(Color.DarkGreen);
+        SolidBrush darkGreenBrush = new SolidBrush(Color.DarkGreen); //Brushes
         SolidBrush yellowBrush = new SolidBrush(Color.Yellow);
         SolidBrush redBrush = new SolidBrush(Color.Red);
         SolidBrush blackBrush = new SolidBrush(Color.Black);
         SolidBrush solidBrush = new SolidBrush(Color.White);
 
-        Image sourceImage = Properties.Resources.Bird;
+        Image sourceImage = Properties.Resources.Bird; //Birdy
 
-        SoundPlayer birdSoundEffect = new SoundPlayer(Properties.Resources.Cinematic_Eagle_Cry_Sound_Effect);
+        SoundPlayer birdSoundEffect = new SoundPlayer(Properties.Resources.Cinematic_Eagle_Cry_Sound_Effect); //Sounds
         SoundPlayer nationalAnthem = new SoundPlayer(Properties.Resources.National_Anthem);
-        private Font Font(int fontSize)
+        private Font Font(int fontSize) //Creates a method that allows you to change the font size on the fly
         {
             Font font = new Font("Arial", 1 + fontSize, FontStyle.Bold);
 
             return font;
         }
 
-        private void Background(int yTranslation)
+        private void Background(int yTranslation) //Method that allows you to move the y position of the background (negatives are for cool animation purposes)
         {
             g.FillRectangle(darkGreenBrush, 0, -yTranslation, 71, 500);
             g.FillRectangle(yellowBrush, 71, yTranslation, 71, 500);
@@ -67,7 +67,7 @@ namespace WindowsFormsApp1
 
                 Background(0);
 
-                g.DrawString("Click to open card", Font(i), solidBrush, 70, i);
+                g.DrawString("Click to open card", Font(i), solidBrush, 70, i); //Scales and moves text
 
                 Thread.Sleep(10);
             }
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Click(object sender, EventArgs e)
         {
-            birdSoundEffect.Play();
+            birdSoundEffect.Play(); //Birdy sound effect
 
             for (int i = 500; i >= 50; i -= 5)
             {
@@ -89,18 +89,18 @@ namespace WindowsFormsApp1
                 Thread.Sleep(5);
             }
 
-            string happyBirthdayFullText = "Happy birthday Zimbabwe!";
+            string happyBirthdayFullText = "Happy birthday Zimbabwe!"; //Message
             string happyBirthdayCurrent = "";
 
             for (int i = 0; i < happyBirthdayFullText.Length; i++)
             {
-                happyBirthdayCurrent += happyBirthdayFullText[i];
+                happyBirthdayCurrent += happyBirthdayFullText[i]; //Adds cheracters to message one at a time
                 g.DrawString(happyBirthdayCurrent, Font(20), solidBrush, 75, 350);
 
                 Thread.Sleep(10);
             }
 
-            nationalAnthem.Play();
+            nationalAnthem.Play(); //National anthem
         }
     }
 }
